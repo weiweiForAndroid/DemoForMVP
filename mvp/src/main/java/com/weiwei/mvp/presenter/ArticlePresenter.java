@@ -38,7 +38,7 @@ public class ArticlePresenter implements DataListener<Article>{
         model.loadArticleFromCache(this);
     }
     public  void saveArticals(ArrayList<Article> articles){
-        model.saveArticle(this);
+        model.saveArticle(articles);
     }
 
     /**
