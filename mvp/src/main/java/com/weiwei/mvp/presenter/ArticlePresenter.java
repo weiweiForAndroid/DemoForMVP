@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by MUMU on 2016/8/4.
  */
-public class ArticlePresenter {
+public class ArticlePresenter implements DataListener<Article>{
     ArticleView view;
     ArticleModel model = new ArticleModelImpl();
     ArticleApi articleApi = new ArticleApi();
@@ -26,13 +26,7 @@ public class ArticlePresenter {
      */
     public void fetchArticles(){
         view.showLoading();
-        articleApi.fetchArticles(new DataListener<Article>() {
-            @Override
-            public void onComplete(List<Article> t) {
-                view.hideLoading();
-                view.showArticles(t);
-            }
-        });
+        articleApi.fetchArticles(this);
     }
 
     /**
@@ -40,12 +34,17 @@ public class ArticlePresenter {
      */
     public void loadArticlesFromDB(){
         view.showLoading();
-        model.loadArticleFromCache(new DataListener<Article>() {
-            @Override
-            public void onComplete(List<Article> t) {
-                view.hideLoading();
-                view.showArticles(t);
-            }
-        });
+        model.loadArticleFromCache(this);
+    }
+
+    /**
+     * 数据加载完成
+     *
+     * @param t
+     */
+    @Override
+    public void onComplete(List<Article> t) {
+        view.hideLoading();
+        view.showArticles(t);
     }
 }
