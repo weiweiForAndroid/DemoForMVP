@@ -13,6 +13,6 @@ public interface ArticleModel {
      * 保存文章
      * @param articles
      */
-    public abstract void   saveArticle(List<Article> articles);
-    public abstract void   loadArticleFromCache(DataListener<Article> articleDataListener);
+      void   saveArticle(List<Article> articles);
+      void   loadArticleFromCache(DataListener<Article> articleDataListener);
 }
