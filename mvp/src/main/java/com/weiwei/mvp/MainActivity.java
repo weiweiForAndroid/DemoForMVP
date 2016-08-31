@@ -7,10 +7,13 @@ import com.weiwei.mvp.entity.Article;
 import com.weiwei.mvp.presenter.ArticlePresenter;
 import com.weiwei.mvp.view.ArticleView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ArticleView {
     ArticlePresenter presenter;
+    ArrayList<Article> articles  = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements ArticleView {
         presenter = new ArticlePresenter(this);
         presenter.fetchArticles();
         presenter.loadArticlesFromDB();
+        presenter.saveArticals(articles);
     }
 
 

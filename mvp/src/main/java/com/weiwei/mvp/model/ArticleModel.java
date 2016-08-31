@@ -11,8 +11,8 @@ import java.util.List;
 public interface ArticleModel {
     /**
      * 保存文章
-     * @param articles
+     * @param
      */
-      void   saveArticle(List<Article> articles);
+      void   saveArticle(DataListener<Article> articleDataListener);
       void   loadArticleFromCache(DataListener<Article> articleDataListener);
 }

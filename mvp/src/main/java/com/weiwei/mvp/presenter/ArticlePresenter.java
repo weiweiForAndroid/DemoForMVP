@@ -7,6 +7,7 @@ import com.weiwei.mvp.model.ArticleModel;
 import com.weiwei.mvp.model.ArticleModelImpl;
 import com.weiwei.mvp.view.ArticleView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +36,9 @@ public class ArticlePresenter implements DataListener<Article>{
     public void loadArticlesFromDB(){
         view.showLoading();
         model.loadArticleFromCache(this);
+    }
+    public  void saveArticals(ArrayList<Article> articles){
+        model.saveArticle(this);
     }
 
     /**
