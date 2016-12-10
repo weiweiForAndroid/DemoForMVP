@@ -1,7 +1,5 @@
 package com.weiwei.mvp.data;
 
-import com.weiwei.mvp.entity.Article;
-
 import java.util.List;
 
 /**

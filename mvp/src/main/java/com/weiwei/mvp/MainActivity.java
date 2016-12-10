@@ -3,7 +3,7 @@ package com.weiwei.mvp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.weiwei.mvp.entity.Article;
+import com.weiwei.mvp.entity.ArticlE;
 import com.weiwei.mvp.presenter.ArticlePresenter;
 import com.weiwei.mvp.view.ArticleView;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ArticleView {
     ArticlePresenter presenter;
-    ArrayList<Article> articles  = new ArrayList<>();
+    ArrayList<ArticlE> articles  = new ArrayList<>();
 
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements ArticleView {
 
 
     @Override
-    public void showArticles(List<Article> articleList) {
+    public void showArticles(List<ArticlE> articleList) {
 
     }
 

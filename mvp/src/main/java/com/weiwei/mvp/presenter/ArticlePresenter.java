@@ -2,7 +2,7 @@ package com.weiwei.mvp.presenter;
 
 import com.weiwei.mvp.data.ArticleApi;
 import com.weiwei.mvp.data.DataListener;
-import com.weiwei.mvp.entity.Article;
+import com.weiwei.mvp.entity.ArticlE;
 import com.weiwei.mvp.model.ArticleModel;
 import com.weiwei.mvp.model.ArticleModelImpl;
 import com.weiwei.mvp.view.ArticleView;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by MUMU on 2016/8/4.
  */
-public class ArticlePresenter implements DataListener<Article>{
+public class ArticlePresenter implements DataListener<ArticlE>{
     ArticleView view;
     ArticleModel model = new ArticleModelImpl();
     ArticleApi articleApi = new ArticleApi();
@@ -37,7 +37,7 @@ public class ArticlePresenter implements DataListener<Article>{
         view.showLoading();
         model.loadArticleFromCache(this);
     }
-    public  void saveArticals(ArrayList<Article> articles){
+    public  void saveArticals(ArrayList<ArticlE> articles){
         model.saveArticle(articles);
     }
 
@@ -47,7 +47,7 @@ public class ArticlePresenter implements DataListener<Article>{
      * @param t
      */
     @Override
-    public void onComplete(List<Article> t) {
+    public void onComplete(List<ArticlE> t) {
         view.hideLoading();
         view.showArticles(t);
     }

@@ -1,6 +1,6 @@
 package com.weiwei.mvp.data;
 
-import com.weiwei.mvp.entity.Article;
+import com.weiwei.mvp.entity.ArticlE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
  * Created by MUMU on 2016/8/4.
  */
 public class ArticleApi {
-    List<Article> articles = new ArrayList<>();
+    List<ArticlE> articles = new ArrayList<>();
 
-    public void fetchArticles(DataListener<Article> listener) {
+    public void fetchArticles(DataListener<ArticlE> listener) {
 
         //一系列网络异步操作
         listener.onComplete(articles);
