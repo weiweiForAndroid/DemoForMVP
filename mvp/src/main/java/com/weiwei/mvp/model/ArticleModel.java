@@ -1,7 +1,7 @@
 package com.weiwei.mvp.model;
 
 import com.weiwei.mvp.data.DataListener;
-import com.weiwei.mvp.entity.ArticlE;
+import com.weiwei.mvp.entity.Article;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ public interface ArticleModel {
      * 保存文章
      * @param articles
      */
-      void   saveArticle(List<ArticlE> articles);
-      void   loadArticleFromCache(DataListener<ArticlE> articleDataListener);
+      void   saveArticle(List<Article> articles);
+      void   loadArticleFromCache(DataListener<Article> articleDataListener);
 }

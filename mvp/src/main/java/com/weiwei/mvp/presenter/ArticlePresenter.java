@@ -1,54 +1,29 @@
 package com.weiwei.mvp.presenter;
 
-import com.weiwei.mvp.data.ArticleApi;
-import com.weiwei.mvp.data.DataListener;
-import com.weiwei.mvp.entity.ArticlE;
-import com.weiwei.mvp.model.ArticleModel;
-import com.weiwei.mvp.model.ArticleModelImpl;
-import com.weiwei.mvp.view.ArticleView;
+import com.weiwei.mvp.base.RxPresenter;
+import com.weiwei.mvp.entity.Article;
+import com.weiwei.mvp.presenter.contract.ArticleContract;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by MUMU on 2016/8/4.
  */
-public class ArticlePresenter implements DataListener<ArticlE>{
-    ArticleView view;
-    ArticleModel model = new ArticleModelImpl();
-    ArticleApi articleApi = new ArticleApi();
+public class ArticlePresenter extends RxPresenter implements ArticleContract.Presenter {
+    ArticleContract.View view;
 
-    public ArticlePresenter(ArticleView articleView){
+    public ArticlePresenter(ArticleContract.View articleView) {
         view = articleView;
+        view.setPresenter(this);
     }
 
-    /**
-     * 网络获取文章
-     */
-    public void fetchArticles(){
-        view.showLoading();
-        articleApi.fetchArticles(this);
-    }
 
-    /**
-     * 从数据库获取文章
-     */
-    public void loadArticlesFromDB(){
-        view.showLoading();
-        model.loadArticleFromCache(this);
-    }
-    public  void saveArticals(ArrayList<ArticlE> articles){
-        model.saveArticle(articles);
-    }
-
-    /**
-     * 数据加载完成
-     *
-     * @param t
-     */
     @Override
-    public void onComplete(List<ArticlE> t) {
-        view.hideLoading();
-        view.showArticles(t);
+    public void getAticles() {
+        ArrayList<Article> articles = new ArrayList<>();
+        view.showArticles(articles);
+        if (articles.size() == 0) {
+            view.showError("阿偶，还没有文章~~~");
+        }
     }
 }
